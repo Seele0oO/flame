@@ -15,6 +15,9 @@ import { State } from '../../store/reducers';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../store';
 
+import Icon from '@mdi/react';
+import { mdiSearchWeb } from '@mdi/js';
+
 interface Props {
   setLocalSearch: (query: string) => void;
   appSearchResult: App[] | null;
@@ -120,13 +123,16 @@ export const SearchBar = (props: Props): JSX.Element => {
 
   return (
     <div className={classes.SearchContainer}>
-      <input
-        ref={inputRef}
-        type="text"
-        className={classes.SearchBar}
-        onKeyUp={(e) => searchHandler(e)}
-        onDoubleClick={clearSearch}
-      />
+      <div className={classes.SearchWrapper}>
+        <Icon path={mdiSearchWeb} size={1} className={classes.SearchIcon} />
+        <input
+          ref={inputRef}
+          type="text"
+          className={classes.SearchBar}
+          onKeyUp={(e) => searchHandler(e)}
+          onDoubleClick={clearSearch}
+        />
+      </div>
     </div>
   );
 };
